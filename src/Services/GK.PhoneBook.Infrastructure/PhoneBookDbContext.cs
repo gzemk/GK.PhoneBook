@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GK.PhoneBook.Infrastructure
 {
-    public class PhoneBookDbContext : DbContext
+    public class PhoneBookDbContext : AuditableDbContext
     {
         public const string DEFAULT_SCHEMA = "pb";
 
@@ -16,8 +16,9 @@ namespace GK.PhoneBook.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PhoneBookDbContext).Assembly);
             modelBuilder.Entity<Company>().ToTable("Companies", DEFAULT_SCHEMA);
-            modelBuilder.Entity<Person>().ToTable("OrderItems", DEFAULT_SCHEMA);
+            modelBuilder.Entity<Person>().ToTable("Persons", DEFAULT_SCHEMA);
             base.OnModelCreating(modelBuilder);
         }
     }

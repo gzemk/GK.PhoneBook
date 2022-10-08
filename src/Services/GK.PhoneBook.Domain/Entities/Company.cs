@@ -11,6 +11,5 @@ namespace GK.PhoneBook.Domain.Entities
     {
         public string Name { get; set; }    
         public int EmployeesCount { get; set; }  // No of Employees 
-        public DateTime CreatedDate { get; set; }  //Registration Date
     }
 }
