@@ -19,9 +19,4 @@
     <ProjectReference Include="..\GK.PhoneBook.Domain\GK.PhoneBook.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Persons\" />
-    <Folder Include="Mappings\" />
-  </ItemGroup>
-
 </Project>

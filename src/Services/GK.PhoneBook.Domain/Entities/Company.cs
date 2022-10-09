@@ -10,6 +10,6 @@ namespace GK.PhoneBook.Domain.Entities
     public class Company :  BaseEntity
     {
         public string Name { get; set; }    
-        public int EmployeesCount { get; set; }  // No of Employees 
+        public int EmployeeCount { get; set; }  // No of Employees 
     }
 }

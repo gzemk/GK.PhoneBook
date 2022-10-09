@@ -1,11 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
 using GK.PhoneBook.Application.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GK.PhoneBook.Application.Extensions;
 
 namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyCommand
 {
@@ -15,26 +11,28 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
         public CreateCompanyCommandValidator(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            
+
             RuleFor(p => p.Name)
                 .NotEmpty()
-                    .WithMessage("{PropertyName} is required.")
+                    .WithMessage($"{{PropertyName}} is required.")
                 .NotNull()
                 .MaximumLength(100)
-                    .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.");
+                    .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.")
+                .Must((item, value, context) => !context.CompanyList().Any(x => x.Name == item.Name.Trim()))
+                    .WithMessage($"{{PropertyName}} must be exist");
 
-            RuleFor(p => p.EmployeesCount)
+            RuleFor(p => p.EmployeeCount)
                     .NotEmpty()
-                        .WithMessage("{PropertyName} is required.")
+                        .WithMessage($"{{PropertyName}} is required.")
                     .GreaterThan(0)
-                        .WithMessage("{PropertyName} must be at least 1.");
+                        .WithMessage($"{{PropertyName}} must be at least 1.");
         }
 
         protected override bool PreValidate(ValidationContext<CreateCompanyCommandRequest> context, ValidationResult result)
         {
             if (context.InstanceToValidate != null)
             {
-                context.RootContextData["companyList"] = _unitOfWork.CompanyRepository.GetAll(x => x.Name == context.InstanceToValidate.Name);
+                context.RootContextData["companyList"] = _unitOfWork.CompanyRepository.GetAll();
             }
             return base.PreValidate(context, result);
         }

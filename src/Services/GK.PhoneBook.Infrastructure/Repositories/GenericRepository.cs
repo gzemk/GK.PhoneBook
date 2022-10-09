@@ -1,12 +1,8 @@
 ﻿using GK.PhoneBook.Application.Interfaces;
+using LinqKit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GK.PhoneBook.Infrastructure.Repositories
 {
@@ -41,29 +37,42 @@ namespace GK.PhoneBook.Infrastructure.Repositories
             return await _dbContext.Set<T>().FindAsync(id);
         }
 
-        public Task<IQueryable<T>> Get()
+        public virtual IQueryable<T> Get()
         {
-            throw new NotImplementedException();
+            return GetQueryable();
         }
 
-        public async Task<IReadOnlyList<T>> GetAll()
+        public List<T> GetAll()
         {
-            return await _dbContext.Set<T>().ToListAsync();
+            return GetQueryable(null, null).ToList();
         }
 
-        public Task<List<T>> GetAll(Expression<Func<T, bool>> predicate)
+        public virtual List<T> GetAll(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return GetQueryable(predicate, null).ToList();
         }
 
-        public Task<List<T>> GetAll(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>> include)
+        public virtual List<T> GetAll(Expression<Func<T, bool>> predicate, Func<IQueryable<T>, IIncludableQueryable<T, object>> include)
         {
-            throw new NotImplementedException();
+            return GetQueryable(predicate, include).ToList();
         }
 
         public async Task Update(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
+        }
+
+        private IQueryable<T> GetQueryable(Expression<Func<T,bool>> predicate  = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
+        {
+            IQueryable<T> query = _dbContext.Set<T>();
+            if (include != null)
+            {
+                query = include(query);
+            }
+            predicate ??= PredicateBuilder.New<T>(true);
+            query = query.Where(predicate);
+            Console.WriteLine(query.ToQueryString());
+            return query;
         }
     }
 }

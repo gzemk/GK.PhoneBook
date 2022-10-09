@@ -1,4 +1,5 @@
 ﻿using GK.PhoneBook.Domain.Entities;
+using GK.PhoneBook.Infrastructure.DbSeeds;
 using Microsoft.EntityFrameworkCore;
 
 namespace GK.PhoneBook.Infrastructure
@@ -20,6 +21,8 @@ namespace GK.PhoneBook.Infrastructure
             modelBuilder.Entity<Company>().ToTable("Companies", DEFAULT_SCHEMA);
             modelBuilder.Entity<Person>().ToTable("Persons", DEFAULT_SCHEMA);
             base.OnModelCreating(modelBuilder);
+
+            PhoneBookDbSeedData.EnsureSeed(modelBuilder);
         }
     }
 }

@@ -11,10 +11,10 @@ namespace GK.PhoneBook.Application.Interfaces
     public interface IGenericRepository<T> where T : class
     {
         Task<T> Get(int id);
-        Task<IQueryable<T>> Get();
-        Task<IReadOnlyList<T>> GetAll();
-        Task<List<T>> GetAll(Expression<Func<T, bool>> predicate);
-        Task<List<T>> GetAll(Expression<Func<T, bool>> predicate,Func<IQueryable<T>, IIncludableQueryable<T,object>> include);
+        IQueryable<T> Get();
+        List<T> GetAll();
+        List<T> GetAll(Expression<Func<T, bool>> predicate);
+        List<T> GetAll(Expression<Func<T, bool>> predicate,Func<IQueryable<T>, IIncludableQueryable<T,object>> include);
         Task<T> Add(T entity);
         Task<bool> Exists(int id);
         Task Update(T entity);

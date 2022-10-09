@@ -11,7 +11,7 @@ namespace GK.PhoneBook.API.Exceptions
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-        static readonly ILogger Log = (ILogger)Serilog.Log.ForContext<ExceptionMiddleware>();
+        //static readonly ILogger Log = (ILogger)Serilog.Log.ForContext<ExceptionMiddleware>();
 
         public ExceptionMiddleware(RequestDelegate next)
         {
@@ -41,9 +41,9 @@ namespace GK.PhoneBook.API.Exceptions
                 StatusCode = httpContext.Response.StatusCode
             });
 
-            //TO DO Seri Log 
-            var dateTime = DateTime.UtcNow;
-            Log.LogError($"{dateTime.ToString("HH:mm:ss")} : {ex}");
+            ////TO DO Seri Log 
+            //var dateTime = DateTime.UtcNow;
+            //Log.LogError($"{dateTime.ToString("HH:mm:ss")} : {ex}");
 
             return httpContext.Response.WriteAsync(result);
         }

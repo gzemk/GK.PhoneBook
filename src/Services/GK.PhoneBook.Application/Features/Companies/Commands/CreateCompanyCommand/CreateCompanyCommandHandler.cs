@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using GK.PhoneBook.Application.Interfaces;
+using GK.PhoneBook.Application.Mappings;
 using GK.PhoneBook.Domain.Entities;
 using MediatR;
 using System;
@@ -13,17 +14,15 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
     public class CreateCompanyCommandHandler : IRequestHandler<CreateCompanyCommandRequest, CreateCompanyCommandResponse>
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IMapper _mapper;
 
-        public CreateCompanyCommandHandler(IUnitOfWork unitOfWork, IMapper mapper)
+        public CreateCompanyCommandHandler(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _mapper = mapper;
         }
 
         public async Task<CreateCompanyCommandResponse> Handle(CreateCompanyCommandRequest request, CancellationToken cancellationToken)
         {
-            var response = new CreateCompanyCommandResponse();
+            CreateCompanyCommandResponse response = new();
             var validator = new CreateCompanyCommandValidator(_unitOfWork);
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
 
@@ -35,7 +34,8 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
             }
             else
             {
-                var company = _mapper.Map<Company>(request);
+                request.Name = request.Name.Trim();
+                var company = ObjectMapper.Mapper.Map<Company>(request);
                 company = await _unitOfWork.CompanyRepository.Add(company);
                 await _unitOfWork.Save();
 

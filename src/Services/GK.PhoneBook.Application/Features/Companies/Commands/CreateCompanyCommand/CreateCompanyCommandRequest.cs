@@ -10,6 +10,6 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
     public class CreateCompanyCommandRequest : IRequest<CreateCompanyCommandResponse>
     {
         public string Name { get; set; }
-        public int EmployeesCount { get; set; }
+        public int EmployeeCount { get; set; }
     }
 }
