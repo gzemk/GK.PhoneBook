@@ -46,7 +46,7 @@ namespace GK.PhoneBook.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<UpdatePersonCommandResponse>> Update([FromRoute] int id, [FromBody] PersonDto request )
+        public async Task<ActionResult<UpdatePersonCommandResponse>> Update(int id, [FromBody] PersonDto request )
         {
             var requestModel  = ObjectMapper.Mapper.Map<UpdatePersonCommandRequest>(request);
             requestModel.Id = id;

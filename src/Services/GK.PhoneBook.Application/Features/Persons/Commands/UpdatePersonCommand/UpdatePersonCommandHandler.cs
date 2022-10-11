@@ -1,4 +1,6 @@
-﻿using GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand;
+﻿using FluentValidation;
+using GK.PhoneBook.Application.Exceptions;
+using GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand;
 using GK.PhoneBook.Application.Interfaces;
 using GK.PhoneBook.Application.Mappings;
 using GK.PhoneBook.Domain.Entities;
@@ -21,26 +23,23 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
         }
         public async Task<UpdatePersonCommandResponse> Handle(UpdatePersonCommandRequest request, CancellationToken cancellationToken)
         {
-            var response = new UpdatePersonCommandResponse();
             var validator = new UpdatePersonCommandValidator(_unitOfWork);
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
 
             if (validationResult.IsValid == false)
-            {
-                response.Success = false;
-                response.Message = "Person couldn't update.";
-                response.Errors = validationResult.Errors.Select(m => m.ErrorMessage).ToList();
-            }
-            else
-            {
+                throw new ValidationException(validationResult.Errors);
+
+            var personInDb = await _unitOfWork.PersonRepository.Get(request.Id);
+
+            if (personInDb == null) 
+                throw new NotFoundException(nameof(Person),request.Id);
+
                 var person = ObjectMapper.Mapper.Map<Person>(request);
                 await _unitOfWork.PersonRepository.Update(person);  // TODO
                 await _unitOfWork.Save();
 
-                response.Success = true;
-                response.Message = "Person updated.";
-                response.Id = request.Id;
-            }
+            UpdatePersonCommandResponse response = new(){ Id = request.Id, Success = true, Message = "Person updated."};
+
             return response;
         }
     }
