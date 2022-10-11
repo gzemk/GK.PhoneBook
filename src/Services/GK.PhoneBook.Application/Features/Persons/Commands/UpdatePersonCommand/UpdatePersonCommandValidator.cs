@@ -1,13 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand;
 using GK.PhoneBook.Application.Interfaces;
-using GK.PhoneBook.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using GK.PhoneBook.Application.Extensions;
 
 namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand

@@ -11,14 +11,12 @@ namespace GK.PhoneBook.Infrastructure.Repositories
     public class UnitOfWork : IUnitOfWork
     {
         private readonly PhoneBookDbContext _context;
-        private readonly IHttpContextAccessor _httpContextAccessor;
         private ICompanyRepository _companyRepository;
         private IPersonRepository _personRepository;
 
-        public UnitOfWork(PhoneBookDbContext context, IHttpContextAccessor httpContextAccessor)
+        public UnitOfWork(PhoneBookDbContext context)
         {
             _context = context;
-            _httpContextAccessor = httpContextAccessor; 
         }
 
         public ICompanyRepository CompanyRepository => _companyRepository ??= new CompanyRepository(_context);

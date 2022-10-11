@@ -18,9 +18,6 @@ namespace GK.PhoneBook.Application.Mappings
     {
         public CustomMapper()
         {
-            //CreateMap<source, destination>()
-            //.ForMember(dest => dest.Id, src => src.MapForm(x => x.Id));
-
             CreateMap<CreateCompanyCommandRequest, Company>();
             CreateMap<Company, CompanyDto>();
             CreateMap<CreatePersonCommandRequest, Person>();
@@ -31,7 +28,6 @@ namespace GK.PhoneBook.Application.Mappings
             CreateMap<Person, GetAllPersonDto>()
                 .ForMember(dest => dest.Company, src => src.MapFrom(x => x.Company));
             CreateMap<GetPersonDto, GetPersonQueryResponse>();
-            CreateMap<UpdatePersonCommandRequest, Person>();
 
         }
     }

@@ -1,16 +1,8 @@
 ﻿using FluentValidation;
 using GK.PhoneBook.Application.Exceptions;
-using GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand;
 using GK.PhoneBook.Application.Interfaces;
-using GK.PhoneBook.Application.Mappings;
 using GK.PhoneBook.Domain.Entities;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
 {
@@ -34,9 +26,13 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
             if (personInDb == null) 
                 throw new NotFoundException(nameof(Person),request.Id);
 
-                var person = ObjectMapper.Mapper.Map<Person>(request);
-                await _unitOfWork.PersonRepository.Update(person);  // TODO
-                await _unitOfWork.Save();
+            personInDb.FullName = request.FullName;
+            personInDb.PhoneNumber = request.PhoneNumber;
+            personInDb.Address = request.Address;
+            personInDb.CompanyId = request.CompanyId;
+
+            _unitOfWork.PersonRepository.Update(personInDb);
+             await _unitOfWork.Save();
 
             UpdatePersonCommandResponse response = new(){ Id = request.Id, Success = true, Message = "Person updated."};
 

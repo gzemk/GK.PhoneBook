@@ -17,7 +17,7 @@ namespace GK.PhoneBook.Application.Interfaces
         List<T> GetAll(Expression<Func<T, bool>> predicate,Func<IQueryable<T>, IIncludableQueryable<T,object>> include);
         Task<T> Add(T entity);
         Task<bool> Exists(int id);
-        Task Update(T entity);
+        T Update(T entity);
         Task Delete(T entity);
         
         

@@ -23,7 +23,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Queries.GetAllPersonQuery
             GetAllPersonQueryResponse response = new();
             List<GetAllPersonDto> persons = new();
 
-            request.QueryItem = request.QueryItem.Trim().ToLower();  //TODO kontrol
+            request.QueryItem = request.QueryItem.Trim().ToLower(); 
 
             var query =  _unitOfWork.PersonRepository.Get();
 

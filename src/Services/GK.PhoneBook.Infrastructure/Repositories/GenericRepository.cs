@@ -57,9 +57,10 @@ namespace GK.PhoneBook.Infrastructure.Repositories
             return GetQueryable(predicate, include).ToList();
         }
 
-        public async Task Update(T entity)
+        public virtual T Update(T entity)
         {
-            _dbContext.Entry(entity).State = EntityState.Modified;
+            _dbContext.Set<T>().Update(entity);
+            return entity;
         }
 
         private IQueryable<T> GetQueryable(Expression<Func<T,bool>> predicate  = null, Func<IQueryable<T>, IIncludableQueryable<T, object>> include = null)
@@ -72,7 +73,7 @@ namespace GK.PhoneBook.Infrastructure.Repositories
             predicate ??= PredicateBuilder.New<T>(true);
             query = query.Where(predicate);
             Console.WriteLine(query.ToQueryString());
-            return query;
+            return query.AsNoTracking();
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GK.PhoneBook.Infrastructure.Migrations
 {
     [DbContext(typeof(PhoneBookDbContext))]
-    [Migration("20221009193622_AddedSeedData")]
-    partial class AddedSeedData
+    [Migration("20221011132807_intialdb")]
+    partial class intialdb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -47,32 +47,32 @@ namespace GK.PhoneBook.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Companies", "pb");
+                    b.ToTable("Companies");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            CreatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2734),
+                            CreatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1242),
                             EmployeeCount = 50,
                             Name = "Blue Company",
-                            UpdatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2748)
+                            UpdatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1255)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2751),
+                            CreatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1256),
                             EmployeeCount = 30,
                             Name = "Green Company",
-                            UpdatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2752)
+                            UpdatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1257)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2753),
+                            CreatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1258),
                             EmployeeCount = 10,
                             Name = "Red Company",
-                            UpdatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2753)
+                            UpdatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1259)
                         });
                 });
 
@@ -109,7 +109,7 @@ namespace GK.PhoneBook.Infrastructure.Migrations
 
                     b.HasIndex("CompanyId");
 
-                    b.ToTable("Persons", "pb");
+                    b.ToTable("Persons");
 
                     b.HasData(
                         new
@@ -117,30 +117,30 @@ namespace GK.PhoneBook.Infrastructure.Migrations
                             Id = 1,
                             Address = "Izmir/Turkey",
                             CompanyId = 1,
-                            CreatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2844),
+                            CreatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1343),
                             FullName = "Gizem Kgizem",
                             PhoneNumber = "+905073452312",
-                            UpdatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2845)
+                            UpdatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1344)
                         },
                         new
                         {
                             Id = 2,
                             Address = "Ankara/Turkey",
                             CompanyId = 2,
-                            CreatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2846),
+                            CreatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1346),
                             FullName = "Rose KRose",
                             PhoneNumber = "+905073455512",
-                            UpdatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2846)
+                            UpdatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1346)
                         },
                         new
                         {
                             Id = 3,
                             Address = "Istanbul/Turkey",
                             CompanyId = 3,
-                            CreatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2848),
+                            CreatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1347),
                             FullName = "Melinda GMelindaGates",
                             PhoneNumber = "+905073455512",
-                            UpdatedDate = new DateTime(2022, 10, 9, 22, 36, 22, 375, DateTimeKind.Local).AddTicks(2848)
+                            UpdatedDate = new DateTime(2022, 10, 11, 16, 28, 7, 503, DateTimeKind.Local).AddTicks(1347)
                         });
                 });
 
