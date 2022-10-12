@@ -27,7 +27,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
             _validator = new CreatePersonCommandValidator(_mockUnitOfWork.Object);
             _response = new CreatePersonCommandResponse()
             {   
-                Id = 4,
+                Id = 5,
                 Success = true,
                 Message = "Person created"
             };

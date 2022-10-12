@@ -20,20 +20,26 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Queries.GetPerson
             _handler = new GetPersonQueryHandler(_mockUnitOfWork.Object);
             _response = new GetPersonQueryResponse()
             {
-                //burada liste dönmeli
+                Success = true,
+                Id = 2,
+                FullName = "Ceren Küçük",
+                PhoneNumber = "+905055550056",
+                Address = "Buca/Izmir/Turkey",
+                CompanyName = "Pink Company"
             };
         }
 
         [TestMethod]
         public async Task GetPerson_Success_RandomPerson()
         {
-            var request = new GetPersonQueryRequest()
-            {
-            };
+            var request = new GetPersonQueryRequest();
             var result = await _handler.Handle(request, CancellationToken.None);
-            Assert.AreEqual(_response.Id, result.Id);
             Assert.AreEqual(_response.Success, result.Success);
-            Assert.AreEqual(_response.Message, result.Message);
+            Assert.AreEqual(_response.Id, result.Id);
+            Assert.AreEqual(_response.FullName, result.FullName);
+            Assert.AreEqual(_response.Address, result.Address);
+            Assert.AreEqual(_response.PhoneNumber, result.PhoneNumber);
+            Assert.AreEqual(_response.CompanyName, result.CompanyName);
         }
 
     }

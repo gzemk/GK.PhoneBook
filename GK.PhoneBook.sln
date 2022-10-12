@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83DD2FE0-ADF8-4EE9-BFBD-7AD474555F29}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F25BB8E5-E123-4E7B-93EA-161B44EE2610}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{BA70B585-18DD-466C-A37B-368CF6617AC6}"
@@ -19,9 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GK.PhoneBook.Application", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GK.PhoneBook.API", "src\Services\GK.PhoneBook.API\GK.PhoneBook.API.csproj", "{A057B726-ECC2-485D-BF4E-6367BE1FC4FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GK.PhoneBook.Application.UnitTest", "tests\GK.PhoneBook.Application.UnitTest\GK.PhoneBook.Application.UnitTest.csproj", "{EFD4A4E7-CBA9-461C-B372-718599101E8B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GK.PhoneBook.API.UnitTest", "tests\GK.PhoneBook.API.UnitTest\GK.PhoneBook.API.UnitTest.csproj", "{173A1CB0-281C-4D67-BFF3-9E65BAAFBBE2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GK.PhoneBook.Application.UnitTest", "tests\GK.PhoneBook.Application.UnitTest\GK.PhoneBook.Application.UnitTest.csproj", "{EFD4A4E7-CBA9-461C-B372-718599101E8B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,10 +45,6 @@ Global
 		{EFD4A4E7-CBA9-461C-B372-718599101E8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EFD4A4E7-CBA9-461C-B372-718599101E8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EFD4A4E7-CBA9-461C-B372-718599101E8B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{173A1CB0-281C-4D67-BFF3-9E65BAAFBBE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{173A1CB0-281C-4D67-BFF3-9E65BAAFBBE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{173A1CB0-281C-4D67-BFF3-9E65BAAFBBE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{173A1CB0-281C-4D67-BFF3-9E65BAAFBBE2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,7 +56,6 @@ Global
 		{6F0AE76B-2360-4C02-8415-6092C3E1E96C} = {B7C6E5D3-CD83-4EDC-821C-08EAB3B5805B}
 		{A057B726-ECC2-485D-BF4E-6367BE1FC4FE} = {B7C6E5D3-CD83-4EDC-821C-08EAB3B5805B}
 		{EFD4A4E7-CBA9-461C-B372-718599101E8B} = {BA70B585-18DD-466C-A37B-368CF6617AC6}
-		{173A1CB0-281C-4D67-BFF3-9E65BAAFBBE2} = {BA70B585-18DD-466C-A37B-368CF6617AC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E6279C97-2CE4-4578-9202-1EC8C6440287}

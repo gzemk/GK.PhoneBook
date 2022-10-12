@@ -27,7 +27,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.DeletePerson
             _validator = new DeletePersonCommandValidator(_mockUnitOfWork.Object);
             _response = new DeletePersonCommandResponse()
             {
-                Id = 4,
+                Id = 0,
                 Success = true,
                 Message = "Person deleted."
             };
@@ -38,7 +38,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.DeletePerson
         {
             var request = new DeletePersonCommandRequest()
             {
-                Id=4
+                Id=2
             };
             var result = await _handler.Handle(request, CancellationToken.None);
             Assert.AreEqual(_response.Id, result.Id);

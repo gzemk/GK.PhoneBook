@@ -1,4 +1,5 @@
 ﻿using GK.PhoneBook.Application.Interfaces;
+using Microsoft.Extensions.Logging;
 using Moq;
 namespace GK.PhoneBook.Application.UnitTest.Mocks
 {
@@ -71,15 +72,14 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
                     personInMock.CompanyId = newPerson.CompanyId;
                 });
 
-            //mockRepository.Setup(x => x.Delete(It.IsAny<GK.PhoneBook.Domain.Entities.Person>()))
-            //   .Returns((int id) =>
-            //   {
-            //       var personInMock = persons.Where(q => q.Id == id).Single();
+            mockRepository.Setup(p => p.Delete(It.IsAny<Domain.Entities.Person>()))
+                .Callback(new Action<Domain.Entities.Person>(x =>
+                {
+                    var personToRemove =persons.Find(y => y.Id == x.Id);
 
-            //       if (personInMock is null) throw new InvalidOperationException();
-
-            //       persons.Remove(personInMock);
-            //   });
+                    if (personToRemove != null)
+                        persons.Remove(personToRemove);
+                }));
 
             return mockRepository;
         }

@@ -27,7 +27,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
             _validator = new UpdatePersonCommandValidator(_mockUnitOfWork.Object);
             _response = new UpdatePersonCommandResponse()
             {
-                Id = 5,
+                Id = 2,
                 Success = true,
                 Message = "Person updated."
             };
@@ -38,7 +38,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
         {
             var request = new UpdatePersonCommandRequest()
             {
-                Id = 1,
+                Id = 2,
                 FullName = "Gül Küçük",
                 PhoneNumber = "+905055550051",
                 Address = "Sapanca /Turkey",
