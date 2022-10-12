@@ -28,11 +28,11 @@ namespace GK.PhoneBook.Infrastructure.Repositories
 
         public async Task<bool> Exists(int id)
         {
-            var entity = await Get(id);
+            var entity = await GetById(id);
             return entity != null;
         }
 
-        public async Task<T> Get(int id)
+        public async Task<T> GetById(int id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }

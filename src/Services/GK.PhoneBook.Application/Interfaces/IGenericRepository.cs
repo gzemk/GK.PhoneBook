@@ -10,7 +10,7 @@ namespace GK.PhoneBook.Application.Interfaces
 {
     public interface IGenericRepository<T> where T : class
     {
-        Task<T> Get(int id);
+        Task<T> GetById(int id);
         IQueryable<T> Get();
         List<T> GetAll();
         List<T> GetAll(Expression<Func<T, bool>> predicate);

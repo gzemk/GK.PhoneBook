@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GK.PhoneBook.Application.UnitTest.Mocks
+namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
 {
-    public static class MockCompanyCommandValidator
+    internal class CreatePersonCommandHandlerDbTests
     {
     }
 }

@@ -1,5 +1,4 @@
 ﻿using GK.PhoneBook.Application.Interfaces;
-using GK.PhoneBook.Domain.Entities;
 using Moq;
 
 namespace GK.PhoneBook.Application.UnitTest.Mocks
@@ -31,13 +30,18 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
             };
 
             var mockRepository = new Mock<ICompanyRepository>();
-            mockRepository.Setup(x => x.Add(It.IsAny<GK.PhoneBook.Domain.Entities.Company>())).ReturnsAsync((GK.PhoneBook.Domain.Entities.Company company) =>
-            {
-                companies.Add(company);
-                return company;
-            });
 
+            mockRepository.Setup(x => x.GetAll()).Returns(companies);
+
+            mockRepository.Setup(x => x.Add(It.IsAny<GK.PhoneBook.Domain.Entities.Company>()))
+                .ReturnsAsync((GK.PhoneBook.Domain.Entities.Company company) =>
+                {
+                    company.Id = companies.Last().Id + 1;
+                    companies.Add(company);
+                    return company;
+                });
             return mockRepository;
         }
     }
 }
+

@@ -39,9 +39,9 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
                 company = await _unitOfWork.CompanyRepository.Add(company);
                 await _unitOfWork.Save();
 
+                response.Id = company.Id;
                 response.Success = true;
                 response.Message = "Company created";
-                response.Id = company.Id;
             }
 
             return response;

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GK.PhoneBook.Application.UnitTest.Person.Commands
+namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
 {
-    internal class DeletePersonCommandHandlerTests
+    internal class UpdatePersonCommandHandlerDbTests
     {
     }
 }

@@ -20,27 +20,30 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand
             _unitOfWork = unitOfWork;
 
             RuleFor(p => p.FullName)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                     .WithMessage($"{{PropertyName}} is required.")
-                .NotNull()
                 .MaximumLength(50)
                     .WithMessage($"{{PropertyName}} must not exceed 50 characters.");
 
             RuleFor(p => p.PhoneNumber)
-                    .NotEmpty()
-                        .WithMessage($"{{PropertyName}} is required.")
-                    .NotNull()
-                    .MaximumLength(20)
-                    .WithMessage($"{{PropertyName}} must not exceed 20 characters.");
-
+                  .Cascade(CascadeMode.Stop)
+                  .NotEmpty()
+                     .WithMessage($"{{PropertyName}} is required.")
+                  .MinimumLength(11)
+                    .WithMessage($"{{PropertyName}} must not be less than 11 characters")
+                  .MaximumLength(14)
+                     .WithMessage($"{{PropertyName}} must not be greater than 13 characters.");
+                 
             RuleFor(p => p.Address)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                     .WithMessage($"{{PropertyName}} is required.")
-                .NotNull()
                 .MaximumLength(200)
                     .WithMessage($"{{PropertyName}} must not exceed 200 characters.");
 
             RuleFor(p => p.CompanyId)
+               .Cascade(CascadeMode.Stop)
                .NotEmpty()
                    .WithMessage($"{{PropertyName}} is required.")
               .Must((item, value, context) => item.CompanyId != default && context.CompanyList().Any(x => x.Id == item.CompanyId))

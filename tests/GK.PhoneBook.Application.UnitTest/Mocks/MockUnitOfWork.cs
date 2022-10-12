@@ -14,8 +14,10 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
         {
             var mockUnitOfWork = new Mock<IUnitOfWork>();
             var mockPersonRepo = MockPersonRepository.GetPersonRepository();
+            var mockCompanyRepo = MockCompanyRepository.GetCompanyRepository();
 
             mockUnitOfWork.Setup(x => x.PersonRepository).Returns(mockPersonRepo.Object);
+            mockUnitOfWork.Setup(x => x.CompanyRepository).Returns(mockCompanyRepo.Object);
 
             return mockUnitOfWork;
         }

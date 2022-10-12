@@ -21,7 +21,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult.Errors);
 
-            var personInDb = await _unitOfWork.PersonRepository.Get(request.Id);
+            var personInDb = await _unitOfWork.PersonRepository.GetById(request.Id);
 
             if (personInDb == null) 
                 throw new NotFoundException(nameof(Person),request.Id);

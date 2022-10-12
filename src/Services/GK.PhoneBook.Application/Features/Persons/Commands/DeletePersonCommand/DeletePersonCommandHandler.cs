@@ -19,7 +19,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.DeletePersonCommand
         {
             DeletePersonCommandResponse response = new();
 
-            var person = await _unitOfWork.PersonRepository.Get(request.Id);
+            var person = await _unitOfWork.PersonRepository.GetById(request.Id);
 
             if (person == null) return null;
 

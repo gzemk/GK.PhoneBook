@@ -13,33 +13,37 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
             _unitOfWork = unitOfWork;
 
             RuleFor(p => p.Id)
+               .Cascade(CascadeMode.Stop)
                .NotEmpty()
                    .WithMessage($"{{PropertyName}} is required.")
               .Must((item, value, context) => item.Id != default && context.PersonList().Any(x => x.Id == item.Id))
                  .WithMessage($"{{PropertyName}} must be exist.");
 
             RuleFor(p => p.FullName)
+               .Cascade(CascadeMode.Stop)
                .NotEmpty()
                    .WithMessage($"{{PropertyName}} is required.")
-               .NotNull()
                .MaximumLength(50)
                    .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.");
 
             RuleFor(p => p.PhoneNumber)
+               .Cascade(CascadeMode.Stop)
                .NotEmpty()
                     .WithMessage($"{{PropertyName}} is required.")
-               .NotNull()
-               .MaximumLength(20)
-                    .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.");
+               .MinimumLength(11)
+                    .WithMessage($"{{PropertyName}} must not be less than 11 characters")
+               .MaximumLength(14)
+                    .WithMessage($"{{PropertyName}} must not be greater than 13 characters.");
 
             RuleFor(p => p.Address)
+                .Cascade(CascadeMode.Stop)
                 .NotEmpty()
                     .WithMessage($"{{PropertyName}} is required.")
-                .NotNull()
                 .MaximumLength(200)
                     .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.");
 
             RuleFor(p => p.CompanyId)
+               .Cascade(CascadeMode.Stop)
                .NotEmpty()
                    .WithMessage($"{{PropertyName}} is required.")
               .Must((item, value, context) => item.Id != default && context.CompanyList().Any(x => x.Id == item.Id))

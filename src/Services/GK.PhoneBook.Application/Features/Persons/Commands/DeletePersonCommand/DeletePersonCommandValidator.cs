@@ -20,6 +20,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.DeletePersonCommand
             _unitOfWork = unitOfWork;
 
             RuleFor(p => p.Id)
+              .Cascade(CascadeMode.Stop)
               .NotEmpty()
                   .WithMessage($"{{PropertyName}} is required.")
              .Must((item, value, context) => item.Id != default && context.PersonList().Any(x => x.Id == item.Id))

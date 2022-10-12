@@ -12,6 +12,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Queries.GetAllPersonQuery
         public GetAllPersonQueryValidator()
         {
             RuleFor(p => p.QueryItem)
+             .Cascade(CascadeMode.Stop)
              .NotEmpty();
         }
     }

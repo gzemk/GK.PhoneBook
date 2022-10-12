@@ -28,15 +28,20 @@ namespace GK.PhoneBook.Application.Features.Persons.Queries.GetPersonQuery
 
             if (personList.Count == 0) return null;
 
-            do
+            int[] ids = personList.Select(x => x.Id).ToArray();
+
+            var random = new Random();
+
+            for (int i = 1; i < ids.First(); i++)
             {
-                int max = personList.First().Id + 1;
-                var randomPersonId = Random.Shared.Next(0, max);
-                var person = personList.Any(x => x.Id == randomPersonId) == true ? personList.FirstOrDefault(x => x.Id == randomPersonId) : null;
-                response = ObjectMapper.Mapper.Map<GetPersonQueryResponse>(person);
-                return response;
-            } while (response is null);
-            
+                if (ids.Contains(i))
+                {
+                    var person = personList.Any(x => x.Id == ids[i]) == true ? personList.FirstOrDefault(x => x.Id == ids[i]) : null;
+                    response = ObjectMapper.Mapper.Map<GetPersonQueryResponse>(person);
+                    return response;
+                }
+            }
+            return response;
         }
     }
 }
