@@ -27,7 +27,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand
             if (validationResult.IsValid == false)
             {
                 response.Success = false;
-                response.Message = "Person couldn't create.";
+                response.Message = "Person couldn't be created";
                 response.Errors = validationResult.Errors.Select(m => m.ErrorMessage).ToList();
             }
             else
@@ -37,7 +37,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.CreatePersonCommand
                 await _unitOfWork.Save();
 
                 response.Success = true;
-                response.Message = "Person created";
+                response.Message = "Person was created";
                 response.Id = person.Id;
             }
             return response;

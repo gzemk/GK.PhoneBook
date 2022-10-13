@@ -57,7 +57,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands
                 Address = "Muğla/Turkey",
                 CompanyId = 1
             };
-            var createExpected = new CreatePersonCommandResponse() { Message = "Person created" };
+            var createExpected = new CreatePersonCommandResponse() { Message = "Person was created" };
             var createResult = await _createHandler.Handle(createRequest, CancellationToken.None);
             Assert.IsTrue(createResult.Success);
             Assert.IsNotNull(createResult.Id);
@@ -73,7 +73,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands
                 Address = "Eskişehir/Turkey",
                 CompanyId = 2
             };
-            var updateExpected = new UpdatePersonCommandResponse() { Message = "Person updated" };
+            var updateExpected = new UpdatePersonCommandResponse() { Message = "Person was updated" };
             var updateResult = await _updateHandler.Handle(updateRequest, CancellationToken.None);
             Assert.IsTrue(updateResult.Success);
             Assert.IsNotNull(updateResult.Id);
@@ -82,7 +82,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands
 
             #region delete
             var deleteRequest = new DeletePersonCommandRequest { Id = updateResult.Id };
-            var deleteExpected = new DeletePersonCommandResponse() { Message = "Person deleted" };
+            var deleteExpected = new DeletePersonCommandResponse() { Message = "Person was deleted" };
             var deleteResult = await _deleteHandler.Handle(deleteRequest, CancellationToken.None);
             Assert.IsTrue(deleteResult.Success);
             Assert.AreEqual(deleteResult.Message, deleteResult.Message);

@@ -50,7 +50,7 @@ namespace GK.PhoneBook.Application.UnitTest.Company.Commands.CreateCompany
             _validator = new CreateCompanyCommandValidator(_unitOfWork);
             _response = new CreateCompanyCommandResponse()
             {
-                Message = "Company created"
+                Message = "Company was created"
             };
         }
 

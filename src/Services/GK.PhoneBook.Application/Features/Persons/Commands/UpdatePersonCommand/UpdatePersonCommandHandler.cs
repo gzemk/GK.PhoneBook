@@ -34,7 +34,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
             _unitOfWork.PersonRepository.Update(personInDb);
             await _unitOfWork.Save();
 
-            UpdatePersonCommandResponse response = new(){ Id = request.Id, Success = true, Message = "Person updated"};
+            UpdatePersonCommandResponse response = new(){ Id = request.Id, Success = true, Message = "Person was updated" };
 
             return response;
         }

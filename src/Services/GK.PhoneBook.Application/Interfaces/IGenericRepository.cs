@@ -19,8 +19,5 @@ namespace GK.PhoneBook.Application.Interfaces
         Task<bool> Exists(int id);
         T Update(T entity);
         Task Delete(T entity);
-        
-        
-
     }
 }

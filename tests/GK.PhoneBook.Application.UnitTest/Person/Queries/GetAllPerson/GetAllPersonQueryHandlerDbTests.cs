@@ -72,6 +72,5 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Queries.GetAllPerson
             Assert.IsTrue(result.Success);
             Assert.IsNotNull(result.Persons.Count);
         }
-
     }
 }

@@ -22,7 +22,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Queries.GetPerson
             {
                 Success = true,
                 Id = 2,
-                FullName = "Ceren Küçük",
+                FullName = "Ceren Yılmaz",
                 PhoneNumber = "+905055550056",
                 Address = "Buca/Izmir/Turkey",
                 CompanyName = "Pink Company"

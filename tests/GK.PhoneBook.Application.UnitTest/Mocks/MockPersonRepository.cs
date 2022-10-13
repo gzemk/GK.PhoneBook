@@ -12,7 +12,7 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
                 new GK.PhoneBook.Domain.Entities.Person
                 {
                     Id = 1,
-                    FullName = "Gizem Küçük",
+                    FullName = "Gizem Yılmaz",
                     PhoneNumber = "+905055550055",
                     Address = "Bornova/Izmir/Turkey",
                     CompanyId = 1
@@ -20,7 +20,7 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
                   new GK.PhoneBook.Domain.Entities.Person
                 {
                     Id = 2,
-                    FullName = "Ceren Küçük",
+                    FullName = "Ceren Yılmaz",
                     PhoneNumber = "+905055550056",
                     Address = "Buca/Izmir/Turkey",
                     CompanyId = 2
@@ -28,7 +28,7 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
                   new GK.PhoneBook.Domain.Entities.Person
                 {
                     Id = 3,
-                    FullName = "Anıl Küçük",
+                    FullName = "Anıl Yılmaz",
                     PhoneNumber = "+905055550057",
                     Address = "Narlıdere/Izmir/Turkey",
                     CompanyId = 3
@@ -36,7 +36,7 @@ namespace GK.PhoneBook.Application.UnitTest.Mocks
                  new GK.PhoneBook.Domain.Entities.Person
                 {
                     Id = 4,
-                    FullName = "Dilan Küçük",
+                    FullName = "Dilan Yılmaz",
                     PhoneNumber = "+905055550056",
                     Address = "Maraş/Turkey",
                     CompanyId = 3

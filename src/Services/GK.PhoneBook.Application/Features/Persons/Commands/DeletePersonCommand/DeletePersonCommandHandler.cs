@@ -27,7 +27,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.DeletePersonCommand
             await _unitOfWork.Save();
 
             response.Success = true;
-            response.Message = "Person deleted";
+            response.Message = "Person was deleted";
 
             return response;
         }

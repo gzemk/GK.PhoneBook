@@ -48,7 +48,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.DeletePerson
         {
             //Arrange
             var request = new DeletePersonCommandRequest{ Id = 2001 };
-            var expected = new DeletePersonCommandResponse() { Message = "Person deleted" };
+            var expected = new DeletePersonCommandResponse() { Message = "Person was deleted" };
 
             //Act
             var result = await _handler.Handle(request, CancellationToken.None);

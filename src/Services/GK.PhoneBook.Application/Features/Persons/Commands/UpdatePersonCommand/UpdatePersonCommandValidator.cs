@@ -24,7 +24,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
                .NotEmpty()
                    .WithMessage($"{{PropertyName}} is required.")
                .MaximumLength(50)
-                   .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.");
+                   .WithMessage($"{{PropertyName}} must not exceed 50 characters.");
 
             RuleFor(p => p.PhoneNumber)
                .Cascade(CascadeMode.Stop)
@@ -40,7 +40,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
                 .NotEmpty()
                     .WithMessage($"{{PropertyName}} is required.")
                 .MaximumLength(200)
-                    .WithMessage("{PropertyName} must not exceed {ComparisonValue} characters.");
+                    .WithMessage($"{{PropertyName}} must not exceed 200 characters.");
 
             RuleFor(p => p.CompanyId)
                .Cascade(CascadeMode.Stop)

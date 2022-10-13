@@ -44,7 +44,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
         }
 
         [TestMethod]
-        public async Task Person_Add()
+        public async Task Person_Create()
         {
             //Arrange
             var request = new CreatePersonCommandRequest
@@ -54,7 +54,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
                 Address = "Muğla/Turkey",
                 CompanyId =  1
             };
-            var expected = new CreatePersonCommandResponse(){ Message = "Person created" };
+            var expected = new CreatePersonCommandResponse(){ Message = "Person was created" };
 
             //Act
             var result = await _handler.Handle(request, CancellationToken.None);

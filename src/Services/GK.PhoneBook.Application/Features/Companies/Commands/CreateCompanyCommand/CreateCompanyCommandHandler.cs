@@ -29,7 +29,7 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
             if (validationResult.IsValid == false)
             {
                 response.Success = false;
-                response.Message = "Company couldn't create.";
+                response.Message = "Company couldn't be created";
                 response.Errors = validationResult.Errors.Select(m => m.ErrorMessage).ToList();
             }
             else
@@ -41,7 +41,7 @@ namespace GK.PhoneBook.Application.Features.Companies.Commands.CreateCompanyComm
 
                 response.Id = company.Id;
                 response.Success = true;
-                response.Message = "Company created";
+                response.Message = "Company was created";
             }
 
             return response;

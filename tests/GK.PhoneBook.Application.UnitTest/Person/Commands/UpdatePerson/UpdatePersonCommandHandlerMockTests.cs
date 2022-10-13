@@ -29,7 +29,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
             {
                 Id = 2,
                 Success = true,
-                Message = "Person updated"
+                Message = "Person was updated"
             };
         }
 
@@ -39,7 +39,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
             var request = new UpdatePersonCommandRequest()
             {
                 Id = 2,
-                FullName = "Gül Küçük",
+                FullName = "Gül Yılmaz",
                 PhoneNumber = "+905055550051",
                 Address = "Sapanca /Turkey",
                 CompanyId = 1

@@ -44,7 +44,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
         }
 
         [TestMethod]
-        public async Task Person_Add()
+        public async Task Person_Update()
         {
             //Arrange
             var request = new UpdatePersonCommandRequest
@@ -55,7 +55,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
                 Address = "Muğla/Turkey",
                 CompanyId = 1
             };
-            var expected = new UpdatePersonCommandResponse() { Message = "Person updated" };
+            var expected = new UpdatePersonCommandResponse() { Message = "Person was updated" };
 
             //Act
             var result = await _handler.Handle(request, CancellationToken.None);

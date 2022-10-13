@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace GK.PhoneBook.API.Exceptions
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class ExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-        //static readonly ILogger Log = (ILogger)Serilog.Log.ForContext<ExceptionMiddleware>();
 
         public ExceptionMiddleware(RequestDelegate next)
         {
@@ -28,7 +26,6 @@ namespace GK.PhoneBook.API.Exceptions
             {
                 await HandleExceptionAsync(httpContext, ex);
             }
-            
         }
 
         private Task HandleExceptionAsync(HttpContext httpContext,  Exception ex)
@@ -40,11 +37,6 @@ namespace GK.PhoneBook.API.Exceptions
                 Message = ex.Message,
                 StatusCode = httpContext.Response.StatusCode
             });
-
-            ////TO DO Seri Log 
-            //var dateTime = DateTime.UtcNow;
-            //Log.LogError($"{dateTime.ToString("HH:mm:ss")} : {ex}");
-
             return httpContext.Response.WriteAsync(result);
         }
     }

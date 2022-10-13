@@ -28,7 +28,7 @@ namespace GK.PhoneBook.Application.UnitTest.Company.Commands.CreateCompany
             { 
                 Id = 4,
                 Success = true,
-                Message = "Company created"
+                Message = "Company was created"
             };
         }
 
@@ -82,9 +82,7 @@ namespace GK.PhoneBook.Application.UnitTest.Company.Commands.CreateCompany
                 Name = "Brown Company",
                 EmployeeCount = 0
             };
-            //var validator = _validator.Validate(request);
             var result = await _handler.Handle(request, CancellationToken.None);
-
 
             Assert.AreEqual(_response.Id, result.Id);
             Assert.AreEqual(_response.Success, result.Success);

@@ -29,7 +29,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
             {   
                 Id = 5,
                 Success = true,
-                Message = "Person created"
+                Message = "Person was created"
             };
         }
 
@@ -38,7 +38,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
         {
             var request = new CreatePersonCommandRequest()
             {
-                FullName = "Deniz Küçük",
+                FullName = "Deniz Yılmaz",
                 PhoneNumber = "+905055550051",
                 Address = "Uşak /Turkey",
                 CompanyId = 1
@@ -54,7 +54,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
         {
             var request = new CreatePersonCommandRequest()
             {
-                FullName = "Dilan Küçük Dilan Küçük Dilan Küçük Dilan Küçük Dilan Küçük Dilan Küçük Dilan KüçükDilan Küçük Dilan Küçük ",
+                FullName = "Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz Dilan Yılmaz ",
                 PhoneNumber = "+9050555500599999999999",
                 Address = "ABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHI ABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHI ABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHI ABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHIABCDEFGHHI",
                 CompanyId = 6
@@ -70,7 +70,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
         {
             var request = new CreatePersonCommandRequest()
             {
-                FullName = "Cansu Küçük",
+                FullName = "Cansu Yılmaz",
                 PhoneNumber = "+905055",
                 Address = "Denizli/Turkey",
                 CompanyId = 1
@@ -102,7 +102,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
         {
             var request = new CreatePersonCommandRequest()
             {
-                FullName = "Cansu Küçük",
+                FullName = "Cansu Yılmaz",
                 PhoneNumber = "+905055550059",
                 Address = "Denizli/Turkey",
                 CompanyId = 1

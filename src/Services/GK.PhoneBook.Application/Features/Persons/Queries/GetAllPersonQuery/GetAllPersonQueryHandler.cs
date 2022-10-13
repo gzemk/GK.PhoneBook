@@ -47,7 +47,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Queries.GetAllPersonQuery
 
                 else
                 {
-                    response.Message = "Results not found for your search criteria";
+                    response.Message = "Results was not found for your search criteria";
                     response.Persons = persons;
                 }
             }
