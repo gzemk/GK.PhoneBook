@@ -60,9 +60,9 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
                 CompanyId = 6
             };
             var result = await _handler.Handle(request, CancellationToken.None);
-            Assert.AreEqual(_response.Id, result.Id);
-            Assert.AreEqual(_response.Success, result.Success);
-            Assert.AreEqual(_response.Message, result.Message);
+            Assert.AreNotEqual(_response.Id, result.Id);
+            Assert.AreNotEqual(_response.Success, result.Success);
+            Assert.AreNotEqual(_response.Message, result.Message);
         }
 
         [TestMethod]
@@ -76,9 +76,9 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
                 CompanyId = 1
             };
             var result = await _handler.Handle(request, CancellationToken.None);
-            Assert.AreEqual(_response.Id, result.Id);
-            Assert.AreEqual(_response.Success, result.Success);
-            Assert.AreEqual(_response.Message, result.Message);
+            Assert.AreNotEqual(_response.Id, result.Id);
+            Assert.AreNotEqual(_response.Success, result.Success);
+            Assert.AreNotEqual(_response.Message, result.Message);
         }
 
         [TestMethod]
@@ -92,9 +92,9 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.CreatePerson
                 CompanyId = 0
             };
             var result = await _handler.Handle(request, CancellationToken.None);
-            Assert.AreEqual(_response.Id, result.Id);
-            Assert.AreEqual(_response.Success, result.Success);
-            Assert.AreEqual(_response.Message, result.Message);
+            Assert.AreNotEqual(_response.Id, result.Id);
+            Assert.AreNotEqual(_response.Success, result.Success);
+            Assert.AreNotEqual(_response.Message, result.Message);
         }
 
         [TestMethod]
