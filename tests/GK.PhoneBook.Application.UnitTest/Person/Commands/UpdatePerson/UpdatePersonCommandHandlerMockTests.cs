@@ -29,7 +29,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.UpdatePerson
             {
                 Id = 2,
                 Success = true,
-                Message = "Person updated."
+                Message = "Person updated"
             };
         }
 

@@ -21,7 +21,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
             if (validationResult.IsValid == false)
                 throw new ValidationException(validationResult.Errors);
 
-            var personInDb =  _unitOfWork.PersonRepository.Get().Where(x => x.Id == request.Id).FirstOrDefault();
+            var personInDb = await _unitOfWork.PersonRepository.GetById(request.Id);
 
             if (personInDb == null) 
                 throw new NotFoundException(nameof(Person),request.Id);
@@ -32,9 +32,9 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
             personInDb.CompanyId = request.CompanyId;
 
             _unitOfWork.PersonRepository.Update(personInDb);
-             await _unitOfWork.Save();
+            await _unitOfWork.Save();
 
-            UpdatePersonCommandResponse response = new(){ Id = request.Id, Success = true, Message = "Person updated."};
+            UpdatePersonCommandResponse response = new(){ Id = request.Id, Success = true, Message = "Person updated"};
 
             return response;
         }

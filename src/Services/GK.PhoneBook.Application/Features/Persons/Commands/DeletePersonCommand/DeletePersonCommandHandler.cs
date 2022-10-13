@@ -19,7 +19,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.DeletePersonCommand
         {
             DeletePersonCommandResponse response = new();
 
-            var person =  _unitOfWork.PersonRepository.Get().Where(x => x.Id == request.Id).FirstOrDefault();
+            var person = await _unitOfWork.PersonRepository.GetById(request.Id);
 
             if (person == null) return null;
 
@@ -27,7 +27,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.DeletePersonCommand
             await _unitOfWork.Save();
 
             response.Success = true;
-            response.Message = "Person deleted.";
+            response.Message = "Person deleted";
 
             return response;
         }

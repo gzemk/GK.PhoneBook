@@ -46,7 +46,7 @@ namespace GK.PhoneBook.Application.Features.Persons.Commands.UpdatePersonCommand
                .Cascade(CascadeMode.Stop)
                .NotEmpty()
                    .WithMessage($"{{PropertyName}} is required.")
-              .Must((item, value, context) => item.Id != default && context.CompanyList().Any(x => x.Id == item.Id))
+              .Must((item, value, context) => item.Id != default && context.CompanyList().Any(x => x.Id == item.CompanyId))
                  .WithMessage($"{{PropertyName}} must be exist.");
 
         }

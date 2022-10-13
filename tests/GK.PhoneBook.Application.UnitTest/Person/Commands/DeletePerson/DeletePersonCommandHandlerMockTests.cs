@@ -29,7 +29,7 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Commands.DeletePerson
             {
                 Id = 0,
                 Success = true,
-                Message = "Person deleted."
+                Message = "Person deleted"
             };
         }
 
