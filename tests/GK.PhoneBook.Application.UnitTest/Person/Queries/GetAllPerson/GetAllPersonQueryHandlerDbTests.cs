@@ -21,8 +21,6 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Queries.GetAllPerson
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly GetAllPersonQueryHandler _handler;
-        private readonly GetAllPersonQueryValidator _validator;
-        private readonly GetAllPersonQueryResponse _response;
 
         public IConfiguration Configuration { get; private set; }
         public IServiceProvider ServiceProvider { get; private set; }
@@ -42,18 +40,30 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Queries.GetAllPerson
 
             _unitOfWork = ServiceProvider.GetRequiredService<IUnitOfWork>();
             _handler = new GetAllPersonQueryHandler(_unitOfWork);
-            _validator = new GetAllPersonQueryValidator();
         }
 
         [TestMethod]
         public async Task Person_GetAll()
         {
             //Arrange
+            var request = new GetAllPersonQueryRequest();
+
+            //Act
+            var result = await _handler.Handle(request, CancellationToken.None);
+
+            //Assert
+            Assert.IsTrue(result.Success);
+            Assert.IsNotNull(result.Persons.Count);
+        }
+
+        [TestMethod]
+        public async Task Person_Search()
+        {
+            //Arrange
             var request = new GetAllPersonQueryRequest
             {
-                QueryItem ="Mel"
+                QueryItem = "Mel"
             };
-            var expected = new CreatePersonCommandResponse() { Message = "Person created" };
 
             //Act
             var result = await _handler.Handle(request, CancellationToken.None);

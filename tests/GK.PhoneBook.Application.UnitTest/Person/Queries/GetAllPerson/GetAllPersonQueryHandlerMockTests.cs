@@ -19,14 +19,12 @@ namespace GK.PhoneBook.Application.UnitTest.Person.Queries.GetAllPerson
     {
         private readonly Mock<IUnitOfWork> _mockUnitOfWork;
         private readonly GetAllPersonQueryHandler _handler;
-        private readonly GetAllPersonQueryValidator _validator;
         private readonly GetAllPersonQueryResponse _response;
 
         public GetAllPersonQueryHandlerMockTests()
         {
             _mockUnitOfWork = MockUnitOfWork.GetUnitOfWork();
             _handler = new GetAllPersonQueryHandler(_mockUnitOfWork.Object);
-            _validator = new GetAllPersonQueryValidator();
             _response = new GetAllPersonQueryResponse()
             {
                 Success = true

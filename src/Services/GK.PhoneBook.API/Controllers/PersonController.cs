@@ -24,14 +24,21 @@ namespace GK.PhoneBook.API.Controllers
             _logger = logger;
         }
 
-        [HttpGet("search")]
-        public async Task<ActionResult<GetAllPersonQueryResponse>> GetAll([FromQuery] string searchKey)
+        [HttpGet("GetAll")]
+        public async Task<ActionResult<GetAllPersonQueryResponse>> GetAll()
+        {
+            var response = await _mediator.Send(new GetAllPersonQueryRequest());
+            return response is null ? NotFound(response) : Ok(response);
+        }
+
+        [HttpGet("Search")]
+        public async Task<ActionResult<GetAllPersonQueryResponse>> GetAllBySearchKey([FromQuery] string searchKey)
         {
             var response = await _mediator.Send(new GetAllPersonQueryRequest { QueryItem = searchKey });
             return response is null ? NotFound(response) : Ok(response);
         }
 
-        [HttpGet("wildCard")]
+        [HttpGet("WildCard")]
         public async Task<ActionResult<GetPersonQueryResponse>> Get()
         {
             var response = await _mediator.Send(new GetPersonQueryRequest());

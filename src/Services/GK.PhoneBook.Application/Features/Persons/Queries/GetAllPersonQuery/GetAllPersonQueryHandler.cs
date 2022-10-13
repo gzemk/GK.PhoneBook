@@ -23,32 +23,43 @@ namespace GK.PhoneBook.Application.Features.Persons.Queries.GetAllPersonQuery
             GetAllPersonQueryResponse response = new();
             List<GetAllPersonDto> persons = new();
 
-            request.QueryItem = request.QueryItem.Trim().ToLower(); 
+            var query = _unitOfWork.PersonRepository.Get();
 
-            var query =  _unitOfWork.PersonRepository.Get();
-
-            if (query != null)
+            if (request.QueryItem != null)
             {
-                query = query.Include(q => q.Company).Where(q => q.FullName.ToLower().Contains(request.QueryItem)
-                || q.Address.ToLower().Contains(request.QueryItem)
-                || q.PhoneNumber.Contains(request.QueryItem)
-                || q.Company.Name.ToLower().Contains(request.QueryItem)
-                || q.Company.EmployeeCount.Equals(request.QueryItem));
+                request.QueryItem = request.QueryItem.Trim().ToLower();
 
+                if (query != null)
+                {
+                    query = query.Include(q => q.Company).Where(q => q.FullName.ToLower().Contains(request.QueryItem)
+                    || q.Address.ToLower().Contains(request.QueryItem)
+                    || q.PhoneNumber.Contains(request.QueryItem)
+                    || q.Company.Name.ToLower().Contains(request.QueryItem)
+                    || q.Company.EmployeeCount.Equals(request.QueryItem));
+
+                    foreach (var item in query.ToList())
+                    {
+                        var result = ObjectMapper.Mapper.Map<GetAllPersonDto>(item);
+                        persons.Add(result);
+                    }
+                    response.Persons = persons;
+                }
+
+                else
+                {
+                    response.Message = "Results not found for your search criteria";
+                    response.Persons = persons;
+                }
+            }
+            else
+            {
                 foreach (var item in query.ToList())
                 {
                     var result = ObjectMapper.Mapper.Map<GetAllPersonDto>(item);
-                    persons.Add(result);    
+                    persons.Add(result);
                 }
                 response.Persons = persons;
             }
-
-            else
-            {
-                response.Message = "Results not found for your search criteria";
-                response.Persons = persons;
-            }
-
             return response;
         }
     }
